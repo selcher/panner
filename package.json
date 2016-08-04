@@ -1,0 +1,32 @@
+{
+  "name": "panner",
+  "version": "0.1.0",
+  "description": "Pan web elements",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter nyan",
+    "build": "cross-env NODE_ENV=development webpack -p -d --progress --colors",
+    "deploy": "cross-env NODE_ENV=production webpack -p -d --progress --colors",
+    "watch": "cross-env NODE_ENV=development webpack --watch",
+    "dev-inline": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --inline --content-base ./build/",
+    "dev-hot": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --hot --inline --content-base ./build/",
+    "dev": "run-p watch dev-inline"
+  },
+  "author": "Selcher",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "chai": "^3.5.0",
+    "concurrently": "^2.2.0",
+    "cross-env": "^2.0.0",
+    "eslint": "^3.1.1",
+    "eslint-loader": "^1.4.1",
+    "mocha": "^2.5.3",
+    "npm-run-all": "^2.3.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
