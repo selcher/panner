@@ -1,7 +1,13 @@
-Panner
-======
+PannerJS
+========
 
 A small library for making web elements pannable.
+
+### Installation
+
+```
+	npm install pannerjs --save
+```
 
 ### Usage
 
