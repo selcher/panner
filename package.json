@@ -1,5 +1,5 @@
 {
-  "name": "panner",
+  "name": "pannerjs",
   "version": "0.1.0",
   "description": "Pan web elements",
   "main": "src/index.js",
