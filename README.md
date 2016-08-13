@@ -1,6 +1,10 @@
 PannerJS
 ========
 
+[![Build Status](https://travis-ci.org/selcher/panner.svg?branch=master)](https://travis-ci.org/selcher/panner)
+
+
+
 A small library for making web elements pannable.
 
 ### Installation
