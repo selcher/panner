@@ -3,9 +3,11 @@ PannerJS
 
 [![Build Status](https://travis-ci.org/selcher/panner.svg?branch=master)](https://travis-ci.org/selcher/panner)
 
-
-
 A small library for making web elements pannable.
+
+### Demo
+
+Online demo is available [here](https://selcher.github.io/panner/)
 
 ### Installation
 
@@ -33,7 +35,11 @@ A small library for making web elements pannable.
 
 ### Contributing
 
-	In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
+Take care to maintain the existing coding style.
+
+Add unit tests for any new or changed functionality.
+
+Lint and test your code.
 
 ### Release History
 
