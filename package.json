@@ -1,7 +1,7 @@
 {
   "name": "pannerjs",
   "version": "0.1.0",
-  "description": "Pan web elements",
+  "description": "Make web elements pannable!",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter nyan",
@@ -12,8 +12,18 @@
     "dev-hot": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --hot --inline --content-base ./build/",
     "dev": "run-p watch dev-inline"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selcher/panner"
+  },
   "author": "Selcher",
   "license": "MIT",
+  "keywords": [
+    "pan",
+    "panner",
+    "panning"
+  ],
+  "homepage": "https://github.com/selcher",
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
