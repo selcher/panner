@@ -66,7 +66,7 @@ var Panner =
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5bac7f97635ec1584594"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "46d81a440b5edceeda3e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8043,30 +8043,92 @@ var Panner =
 	'use strict';
 
 	/**
+	 * Limit execution of onReady function
+	 * to once over the given wait time.
+	 *
+	 * @function _throttle
+	 * @private
+	 *
+	 * @param {function} onReady
+	 * @param {function} onStandby
+	 * @param {number} wait
+	 *
+	 * @returns {function}
+	 */
+
+	var _throttle = function _throttle(onReady, onStandby, wait) {
+	    var time = Date.now();
+
+	    return function (e) {
+	        onStandby(e);
+
+	        if (time + wait - Date.now() < 0) {
+	            onReady(e);
+	            time = Date.now();
+	        }
+	    };
+	};
+
+	/**
+	 * Initialize element to be pannable
+	 * within the given contanerElement.
+	 *
+	 * @function init
+	 * @public
+	 *
+	 * @param {Object} elem
+	 * @param {Object} containerElem
+	 *
+	 * @returns {Object}
+	 */
+	var init = function init(elem, containerElem) {
+	    var container = containerElem ? containerElem : elem.parentElement;
+
+	    var scrollLeft = 0;
+	    var scrollTop = 0;
+
+	    var handleMove = _throttle(function (e) {
+	        e.preventDefault();
+
+	        requestAnimationFrame(function () {
+	            if (e && e.which === 1) {
+
+	                if (e.movementX !== 0) {
+	                    container.scrollLeft -= scrollLeft;
+	                }
+
+	                if (e.movementY !== 0) {
+	                    container.scrollTop -= scrollTop;
+	                }
+
+	                scrollLeft = 0;
+	                scrollTop = 0;
+	            }
+	        });
+	    }, function (e) {
+	        if (e && e.which === 1) {
+
+	            if (e.movementX !== 0) {
+	                scrollLeft += e.movementX;
+	            }
+
+	            if (e.movementY !== 0) {
+	                scrollTop += e.movementY;
+	            }
+	        }
+	    }, 10);
+
+	    elem.addEventListener('mousemove', handleMove);
+
+	    return elem;
+	};
+
+	/**
 	 * Make a web element pannable.
 	 */
 
 	module.exports = {
-		init: function init(elem, containerElem) {
-			var container = containerElem ? containerElem : elem.parentElement;
-
-			elem.addEventListener('mousemove', function (e) {
-				e.preventDefault();
-
-				if (e && e.which === 1) {
-
-					if (e.movementX !== 0) {
-						container.scrollLeft -= e.movementX;
-					}
-
-					if (e.movementY !== 0) {
-						container.scrollTop -= e.movementY;
-					}
-				}
-			});
-
-			return elem;
-		}
+	    init: init
 	};
 
 /***/ }
